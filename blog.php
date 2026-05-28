@@ -21,6 +21,7 @@ if (!$blog) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($blog['title']) ?></title>
+    <meta name="description" content="<?= htmlspecialchars($blog['short_description']) ?>">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -36,7 +37,10 @@ if (!$blog) {
 
     <div class="container blog-detail">
         <h1><?= htmlspecialchars($blog['title']) ?></h1>
-        <p class="meta">Category: <?= htmlspecialchars($blog['category_name']) ?> | Date: <?= date('d M Y', strtotime($blog['created_at'])) ?></p>
+        <p class="meta">Category: <?= htmlspecialchars($blog['category_name'] ? $blog['category_name'] : 'Uncategorized') ?> | Date: <?= date('d M Y', strtotime($blog['created_at'])) ?></p>
+        <?php if ($blog['short_description']): ?>
+            <p class="summary"><?= htmlspecialchars($blog['short_description']) ?></p>
+        <?php endif; ?>
         
         <?php if ($blog['image']): ?>
             <img class="detail-image" src="uploads/<?= htmlspecialchars($blog['image']) ?>" alt="Blog Image">

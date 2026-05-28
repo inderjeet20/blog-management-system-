@@ -27,9 +27,11 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container main-content">
         <aside class="sidebar">
             <h3>Filters</h3>
-            <input type="text" id="search" placeholder="Search blogs...">
+
+            <label for="search">Search</label>
+            <input type="text" id="search" placeholder="Search title, description, or content">
             
-            <h4>Categories</h4>
+            <label for="categoryFilter">Category</label>
             <select id="categoryFilter">
                 <option value="">All Categories</option>
                 <?php foreach($categories as $cat): ?>
@@ -37,11 +39,22 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </select>
 
-            <h4>Sort By Date</h4>
+            <label for="dateFilter">Sort By Date</label>
             <select id="dateFilter">
                 <option value="DESC">Newest First</option>
                 <option value="ASC">Oldest First</option>
             </select>
+
+            <div class="filter-group">
+                <label for="fromDate">From Date</label>
+                <input type="date" id="fromDate">
+            </div>
+            <div class="filter-group">
+                <label for="toDate">To Date</label>
+                <input type="date" id="toDate">
+            </div>
+
+            <button type="button" id="clearFilters" class="btn btn-secondary">Clear Filters</button>
         </aside>
 
         <main class="blogs-list" id="blogsContainer">

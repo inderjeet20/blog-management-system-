@@ -1,0 +1,8 @@
+/mariadb-*/
+/mysql-data/
+/php-bin/
+/uploads/*
+!/uploads/.gitkeep
+/.vscode/
+/.idea/
+*.log
